@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Your Name</title>
+  <meta name="description" content="A sleek personal portfolio showcasing work experience, projects, skills, community, articles, and university life." />
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --bg-soft: #11141b;
+      --card: rgba(17, 20, 27, 0.78);
+      --card-strong: #151924;
+      --text: #e8ecf4;
+      --muted: #9aa3b2;
+      --line: rgba(255, 255, 255, 0.08);
+      --accent: #8b5cf6;
+      --accent-2: #06b6d4;
+      --accent-3: #22c55e;
+      --danger: #fb7185;
+      --shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+      --radius: 22px;
+      --radius-sm: 16px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(139, 92, 246, 0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(6, 182, 212, 0.12), transparent 24%),
+        linear-gradient(180deg, #080a0f 0%, #0b0d12 40%, #090b10 100%);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+      z-index: 0;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(8, 10, 15, 0.7);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 72px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.95), rgba(6, 182, 212, 0.9));
+      box-shadow: 0 10px 30px rgba(139, 92, 246, 0.25);
+      font-size: 1rem;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      padding: 10px 12px;
+      border-radius: 999px;
+      color: var(--muted);
+      transition: 180ms ease;
+      border: 1px solid transparent;
+      font-size: 0.95rem;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      color: var(--text);
+      border-color: var(--line);
+      background: rgba(255, 255, 255, 0.03);
+      outline: none;
+    }
+
+    .hero {
+      padding: 72px 0 34px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.55fr 0.95fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-main {
+      padding: 34px;
+      position: relative;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(139, 92, 246, 0.12);
+      color: #c7b7ff;
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 6vw, 4.9rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      max-width: 11ch;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #ffffff, #a5f3fc 42%, #c4b5fd 80%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      margin: 18px 0 0;
+      max-width: 64ch;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1.03rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      cursor: pointer;
+      transition: 180ms ease;
+      font-weight: 600;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.06);
+      outline: none;
+    }
+
+    .btn-primary {
+      border-color: rgba(139, 92, 246, 0.32);
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.18), rgba(6, 182, 212, 0.12));
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 22px;
+    }
+
+    .profile-card {
+      padding: 26px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .profile-top {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 74px;
+      height: 74px;
+      border-radius: 18px;
+      background:
+        linear-gradient(135deg, rgba(139, 92, 246, 0.95), rgba(6, 182, 212, 0.88));
+      display: grid;
+      place-items: center;
+      font-size: 1.8rem;
+      font-weight: 800;
+      box-shadow: 0 18px 30px rgba(6, 182, 212, 0.15);
+      flex: none;
+    }
+
+    .profile-meta h2 {
+      margin: 0;
+      font-size: 1.25rem;
+    }
+
+    .profile-meta p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .mini {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .mini .value {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .mini .label {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .stack-strip {
+      padding: 20px 22px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .stack-strip .title {
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .ticker {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      color: #dce3ee;
+      font-size: 0.92rem;
+    }
+
+    section {
+      padding: 22px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.4rem, 3vw, 2.1rem);
+      letter-spacing: -0.04em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 60ch;
+      line-height: 1.6;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .card-inner {
+      padding: 22px;
+    }
+
+    .tag-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .tag {
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      color: #d9e1ed;
+      font-size: 0.85rem;
+    }
+
+    .project-card {
+      position: relative;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(6, 182, 212, 0.18), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(139, 92, 246, 0.18), transparent 35%);
+      pointer-events: none;
+    }
+
+    .project-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .project-title {
+      margin: 0;
+      font-size: 1.18rem;
+    }
+
+    .project-desc {
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .link-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      font-size: 0.92rem;
+      transition: 180ms ease;
+    }
+
+    .link-pill:hover {
+      background: rgba(255,255,255,0.06);
+      transform: translateY(-1px);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 22px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 8px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: linear-gradient(180deg, rgba(139, 92, 246, 0.8), rgba(6, 182, 212, 0.6));
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 0 0 18px 18px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -1px;
+      top: 8px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 0 5px rgba(139, 92, 246, 0.12);
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-item h3 {
+      margin: 0;
+      font-size: 1.05rem;
+    }
+
+    .timeline-meta {
+      color: var(--muted);
+      font-size: 0.94rem;
+      margin-top: 4px;
+    }
+
+    .timeline-item p {
+      color: #cfd6e2;
+      line-height: 1.65;
+      margin: 10px 0 0;
+    }
+
+    .skill-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .skill-row {
+      display: grid;
+      gap: 8px;
+    }
+
+    .skill-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: #d9e1ed;
+      font-size: 0.95rem;
+    }
+
+    .bar {
+      width: 100%;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .bar > span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      width: var(--value, 0%);
+    }
+
+    .article-list,
+    .community-list,
+    .university-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .item {
+      padding: 18px 20px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+    }
+
+    .item h3 {
+      margin: 0;
+      font-size: 1.03rem;
+    }
+
+    .item .meta {
+      color: var(--muted);
+      margin-top: 5px;
+      font-size: 0.94rem;
+    }
+
+    .item p {
+      margin: 10px 0 0;
+      color: #d2dae6;
+      line-height: 1.6;
+    }
+
+    .cta {
+      padding: 28px;
+      display: grid;
+      gap: 16px;
+      align-items: center;
+      background:
+        linear-gradient(135deg, rgba(139, 92, 246, 0.14), rgba(6, 182, 212, 0.1)),
+        rgba(255,255,255,0.03);
+    }
+
+    .cta h2 {
+      margin: 0;
+      font-size: clamp(1.5rem, 4vw, 2.3rem);
+      letter-spacing: -0.04em;
+    }
+
+    .cta p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    footer {
+      padding: 28px 0 42px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: 650ms ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .grid-2,
+      .grid-3,
+      .grid-4 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 40px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .topbar-inner {
+        align-items: start;
+        flex-direction: column;
+        padding: 12px 0;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .hero-main,
+      .card-inner,
+      .cta,
+      .profile-card,
+      .stack-strip {
+        padding: 18px;
+      }
+
+      .hero h1 {
+        max-width: 100%;
+      }
+
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#home" aria-label="Go to top of page">
+        <span class="brand-mark">K</span>
+        <span>Your Name</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#community">Community</a>
+        <a href="#articles">Articles</a>
+        <a href="#university">University</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home" class="container">
+    <section class="hero reveal">
+      <div class="hero-grid">
+        <article class="panel hero-main">
+          <div class="eyebrow">Technical portfolio with a personal edge</div>
+          <h1><span>Building useful things</span> with code, curiosity, and consistency.</h1>
+          <p>
+            Hi, I am <strong>Your Name</strong> — a student / developer / builder who likes shipping clean products,
+            learning in public, and staying close to the work. This portfolio is designed to showcase work experience,
+            projects, skills, community activity, writing, and university life in one sharp, simple place.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">See featured work</a>
+            <a class="btn" href="#contact">Get in touch</a>
+            <a class="btn" href="#articles">Read my writing</a>
+          </div>
+        </article>
+
+        <aside class="hero-side">
+          <div class="panel profile-card">
+            <div class="profile-top">
+              <div class="avatar">YN</div>
+              <div class="profile-meta">
+                <h2>Your Name</h2>
+                <p>Computer Science / Software / Product-minded builder</p>
+              </div>
+            </div>
+
+            <div class="mini-grid">
+              <div class="mini">
+                <div class="value">3+</div>
+                <div class="label">Years building</div>
+              </div>
+              <div class="mini">
+                <div class="value">12</div>
+                <div class="label">Projects shipped</div>
+              </div>
+              <div class="mini">
+                <div class="value">5</div>
+                <div class="label">Tech stacks</div>
+              </div>
+              <div class="mini">
+                <div class="value">∞</div>
+                <div class="label">Curiosity level</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel stack-strip">
+            <div class="title">Currently working with</div>
+            <div class="ticker" id="stackTicker"></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="experience" class="reveal">
+      <div class="section-head">
+        <div>
+          <h2>Work Experience</h2>
+          <p>Show impact, scope, and the kind of problems you were trusted to solve.</p>
+        </div>
+      </div>
+      <div class="grid-2" id="experienceGrid"></div>
+    </section>
+
+    <section id="projects" class="reveal">
+      <div class="section-head">
+        <div>
+          <h2>Featured Projects</h2>
+          <p>Keep this section focused on your strongest builds: tools, apps, research, dashboards, or systems.</p>
+        </div>
+      </div>
+      <div class="grid-3" id="projectsGrid"></div>
+    </section>
+
+    <section id="skills" class="reveal">
+      <div class="section-head">
+        <div>
+          <h2>Skills</h2>
+          <p>Mix technical depth with a light touch of collaboration and communication.</p>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="card card-inner">
+          <h3 style="margin-top:0">Technical stack</h3>
+          <div class="skill-list" id="skillBars"></div>
+        </div>
+        <div class="card card-inner">
+          <h3 style="margin-top:0">Tools and strengths</h3>
+          <div class="tag-row" id="skillTags"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="community" class="reveal">
+      <div class="section-head">
+        <div>
+          <h2>Community Activities</h2>
+          <p>Mentorship, volunteering, clubs, hackathons, open-source, and anything that shows you contribute beyond yourself.</p>
+        </div>
+      </div>
+      <div class="community-list" id="communityList"></div>
+    </section>
+
+    <section id="articles" class="reveal">
+      <div class="section-head">
+        <div>
+          <h2>Articles & Writing</h2>
+          <p>Use this space for blog posts, LinkedIn articles, Medium posts, newsletters, or essays.</p>
+        </div>
+      </div>
+      <div class="article-list" id="articlesList"></div>
+    </section>
+
+    <section id="university" class="reveal">
+      <div class="section-head">
+        <div>
+          <h2>University Life</h2>
+          <p>Show the side that is not just GPA: clubs, labs, competitions, leadership, events, and campus moments.</p>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="card card-inner">
+          <h3 style="margin-top:0">Highlights</h3>
+          <div class="university-list" id="universityList"></div>
+        </div>
+        <div class="card card-inner">
+          <h3 style="margin-top:0">My current focus</h3>
+          <p style="color:var(--muted); line-height:1.7; margin-top:0;">
+            I am currently focused on improving my systems thinking, product sense, and execution speed.
+            I care about writing better code, learning from real users, and building things that feel polished.
+          </p>
+          <div class="tag-row" id="focusTags"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <div class="card cta">
+        <h2>Simple on the surface. Sharp underneath.</h2>
+        <p>
+          This portfolio layout is built to be updated often. Swap the data arrays in the JavaScript, change the text,
+          and add new projects or posts as you grow. Push it to GitHub Pages, Netlify, or Vercel for automatic updates.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Let us connect</a>
+          <a class="btn" href="#home">Back to top</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="reveal">
+      <div class="section-head">
+        <div>
+          <h2>Contact</h2>
+          <p>Make it easy for recruiters, collaborators, and friends to reach you.</p>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="card card-inner">
+          <h3 style="margin-top:0">Email</h3>
+          <p style="color:var(--muted); margin-bottom:0">your.email@example.com</p>
+        </div>
+        <div class="card card-inner">
+          <h3 style="margin-top:0">GitHub</h3>
+          <p style="color:var(--muted); margin-bottom:0">github.com/yourusername</p>
+        </div>
+        <div class="card card-inner">
+          <h3 style="margin-top:0">LinkedIn</h3>
+          <p style="color:var(--muted); margin-bottom:0">linkedin.com/in/yourusername</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-row">
+        <div>© <span id="year"></span> Your Name. Built with HTML, CSS, and JavaScript.</div>
+        <div>Designed for GitHub Pages updates.</div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    const data = {
+      stacks: ["JavaScript", "TypeScript", "React", "Node.js", "Python", "SQL"],
+      experience: [
+        {
+          role: "Software Engineer Intern",
+          company: "Company Name",
+          period: "May 2025 - Aug 2025",
+          summary: "Built internal tools and improved workflows by automating repetitive tasks, reducing manual effort, and collaborating with cross-functional teams.",
+          tags: ["Automation", "APIs", "Teamwork"]
+        },
+        {
+          role: "Student Developer / TA / Research Assistant",
+          company: "University Name",
+          period: "2024 - Present",
+          summary: "Supported labs, demos, or research experiments while sharpening debugging, communication, and technical documentation skills.",
+          tags: ["Teaching", "Research", "Documentation"]
+        }
+      ],
+      projects: [
+        {
+          title: "Project One — Smart Productivity App",
+          desc: "A clean app that helps users organize tasks, track habits, or manage projects with a focus on speed and clarity.",
+          stack: ["React", "Firebase", "Tailwind"],
+          links: ["Live Demo", "GitHub"]
+        },
+        {
+          title: "Project Two — Analytics Dashboard",
+          desc: "A data-driven dashboard that visualizes key metrics and turns raw data into decisions.",
+          stack: ["Python", "SQL", "Charting"],
+          links: ["Case Study", "GitHub"]
+        },
+        {
+          title: "Project Three — Campus Tool",
+          desc: "A student-focused tool built to solve a real campus problem such as events, navigation, or resource discovery.",
+          stack: ["Node.js", "Express", "PostgreSQL"],
+          links: ["Read More", "GitHub"]
+        }
+      ],
+      skills: [
+        { name: "Frontend", value: 88 },
+        { name: "Backend", value: 82 },
+        { name: "Data / SQL", value: 76 },
+        { name: "System Design", value: 68 },
+        { name: "Communication", value: 90 }
+      ],
+      skillTags: [
+        "Git & GitHub", "REST APIs", "Responsive UI", "Debugging", "Testing", "Agile", "Figma", "Deployment"
+      ],
+      community: [
+        {
+          title: "Hackathon Participation",
+          meta: "Built under pressure with a team",
+          desc: "Mention awards, finalist placements, or the value of the solution you built in a short time window."
+        },
+        {
+          title: "Volunteering / Mentorship",
+          meta: "Giving back through time and skills",
+          desc: "Highlight tutoring, mentorship, outreach, workshops, or any work that helped other people grow."
+        },
+        {
+          title: "Open Source / Clubs",
+          meta: "Contributing to communities around code",
+          desc: "Add club leadership, event organizing, pull requests, or a project that helped a wider group."
+        }
+      ],
+      articles: [
+        {
+          title: "How I approached building faster without losing quality",
+          meta: "Blog post • 2026",
+          desc: "Write about your process, lessons learned, and the habits that improved your output."
+        },
+        {
+          title: "What I learned from shipping a project end-to-end",
+          meta: "LinkedIn / Medium • 2026",
+          desc: "Share technical takeaways, design decisions, and what you would do differently next time."
+        }
+      ],
+      university: [
+        {
+          title: "Relevant coursework",
+          meta: "Classes that support your direction",
+          desc: "Algorithms, databases, software engineering, AI, systems, product design, or anything that matters to your path."
+        },
+        {
+          title: "Campus involvement",
+          meta: "Leadership and student life",
+          desc: "Clubs, competitions, panels, events, student orgs, and the energy you bring to campus."
+        }
+      ],
+      focusTags: ["Shipping", "Learning", "Building", "Storytelling", "Design thinking"]
+    };
+
+    const experienceGrid = document.getElementById("experienceGrid");
+    const projectsGrid = document.getElementById("projectsGrid");
+    const skillBars = document.getElementById("skillBars");
+    const skillTags = document.getElementById("skillTags");
+    const communityList = document.getElementById("communityList");
+    const articlesList = document.getElementById("articlesList");
+    const universityList = document.getElementById("universityList");
+    const focusTags = document.getElementById("focusTags");
+    const stackTicker = document.getElementById("stackTicker");
+    const year = document.getElementById("year");
+
+    year.textContent = new Date().getFullYear();
+
+    stackTicker.innerHTML = data.stacks.map(item => `<span class="chip">${item}</span>`).join("");
+    skillTags.innerHTML = data.skillTags.map(item => `<span class="tag">${item}</span>`).join("");
+    focusTags.innerHTML = data.focusTags.map(item => `<span class="tag">${item}</span>`).join("");
+
+    experienceGrid.innerHTML = data.experience.map(item => `
+      <article class="card card-inner">
+        <h3 style="margin-top:0">${item.role}</h3>
+        <div class="meta" style="color:var(--muted); margin-top:6px;">${item.company} • ${item.period}</div>
+        <p style="color:#d2dae6; line-height:1.7;">${item.summary}</p>
+        <div class="tag-row">${item.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div>
+      </article>
+    `).join("");
+
+    projectsGrid.innerHTML = data.projects.map(project => `
+      <article class="card project-card card-inner">
+        <div>
+          <div class="project-header">
+            <h3 class="project-title">${project.title}</h3>
+            <span class="tag">Featured</span>
+          </div>
+          <p class="project-desc">${project.desc}</p>
+          <div class="tag-row">${project.stack.map(s => `<span class="tag">${s}</span>`).join("")}</div>
+        </div>
+        <div class="project-links">
+          ${project.links.map(link => `<a href="#contact" class="link-pill">${link} <span aria-hidden="true">↗</span></a>`).join("")}
+        </div>
+      </article>
+    `).join("");
+
+    skillBars.innerHTML = data.skills.map(skill => `
+      <div class="skill-row">
+        <div class="skill-top">
+          <span>${skill.name}</span>
+          <span>${skill.value}%</span>
+        </div>
+        <div class="bar"><span style="--value:${skill.value}%"></span></div>
+      </div>
+    `).join("");
+
+    communityList.innerHTML = data.community.map(item => `
+      <article class="item">
+        <h3>${item.title}</h3>
+        <div class="meta">${item.meta}</div>
+        <p>${item.desc}</p>
+      </article>
+    `).join("");
+
+    articlesList.innerHTML = data.articles.map(item => `
+      <article class="item">
+        <h3>${item.title}</h3>
+        <div class="meta">${item.meta}</div>
+        <p>${item.desc}</p>
+      </article>
+    `).join("");
+
+    universityList.innerHTML = data.university.map(item => `
+      <article class="item">
+        <h3>${item.title}</h3>
+        <div class="meta">${item.meta}</div>
+        <p>${item.desc}</p>
+      </article>
+    `).join("");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
