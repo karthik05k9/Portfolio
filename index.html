@@ -3,34 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio | Your Name</title>
-  <meta name="description" content="A sleek personal portfolio showcasing work experience, projects, skills, community, articles, and university life." />
+  <title>Portfolio | Krishna Karthik Kotamraju</title>
+  <meta name="description" content="CS grad student at USC building agentic AI systems, distributed infrastructure, and full-stack products." />
   <style>
     :root {
       --bg: #0b0d12;
-      --bg-soft: #11141b;
       --card: rgba(17, 20, 27, 0.78);
-      --card-strong: #151924;
       --text: #e8ecf4;
       --muted: #9aa3b2;
       --line: rgba(255, 255, 255, 0.08);
       --accent: #8b5cf6;
       --accent-2: #06b6d4;
-      --accent-3: #22c55e;
-      --danger: #fb7185;
       --shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
       --radius: 22px;
-      --radius-sm: 16px;
       --max: 1180px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -44,15 +34,7 @@
       overflow-x: hidden;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
+    a { color: inherit; text-decoration: none; }
 
     .noise {
       position: fixed;
@@ -71,6 +53,7 @@
       z-index: 1;
     }
 
+    /* ── Topbar ── */
     .topbar {
       position: sticky;
       top: 0;
@@ -110,31 +93,29 @@
     .nav {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 6px;
       flex-wrap: wrap;
       justify-content: flex-end;
     }
 
     .nav a {
-      padding: 10px 12px;
+      padding: 9px 11px;
       border-radius: 999px;
       color: var(--muted);
       transition: 180ms ease;
       border: 1px solid transparent;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
 
-    .nav a:hover,
-    .nav a:focus-visible {
+    .nav a:hover, .nav a:focus-visible {
       color: var(--text);
       border-color: var(--line);
       background: rgba(255, 255, 255, 0.03);
       outline: none;
     }
 
-    .hero {
-      padding: 72px 0 34px;
-    }
+    /* ── Hero ── */
+    .hero { padding: 72px 0 34px; }
 
     .hero-grid {
       display: grid;
@@ -151,30 +132,26 @@
       overflow: hidden;
     }
 
-    .hero-main {
-      padding: 34px;
-      position: relative;
-    }
+    .hero-main { padding: 34px; }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
       padding: 8px 12px;
       border-radius: 999px;
       background: rgba(139, 92, 246, 0.12);
       color: #c7b7ff;
       border: 1px solid rgba(139, 92, 246, 0.2);
-      font-size: 0.9rem;
+      font-size: 0.86rem;
       margin-bottom: 18px;
     }
 
     .hero h1 {
       margin: 0;
-      font-size: clamp(2.4rem, 6vw, 4.9rem);
-      line-height: 0.95;
+      font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+      line-height: 0.98;
       letter-spacing: -0.05em;
-      max-width: 11ch;
+      max-width: 14ch;
     }
 
     .hero h1 span {
@@ -186,18 +163,31 @@
 
     .hero p {
       margin: 18px 0 0;
-      max-width: 64ch;
+      max-width: 62ch;
       color: var(--muted);
-      line-height: 1.7;
-      font-size: 1.03rem;
+      line-height: 1.75;
+      font-size: 1.02rem;
     }
 
-    .hero-actions {
+    .hero-interests {
+      margin: 18px 0 0;
+      padding: 0;
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
+      flex-direction: column;
+      gap: 8px;
     }
+
+    .hero-interests li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: #d2dae6;
+      font-size: 0.96rem;
+      line-height: 1.5;
+      list-style: none;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 
     .btn {
       display: inline-flex;
@@ -212,10 +202,10 @@
       cursor: pointer;
       transition: 180ms ease;
       font-weight: 600;
+      font-size: 0.94rem;
     }
 
-    .btn:hover,
-    .btn:focus-visible {
+    .btn:hover, .btn:focus-visible {
       transform: translateY(-1px);
       background: rgba(255,255,255,0.06);
       outline: none;
@@ -226,53 +216,28 @@
       background: linear-gradient(135deg, rgba(139, 92, 246, 0.18), rgba(6, 182, 212, 0.12));
     }
 
-    .hero-side {
-      display: grid;
-      gap: 22px;
-    }
-
-    .profile-card {
-      padding: 26px;
-      display: grid;
-      gap: 16px;
-    }
-
-    .profile-top {
-      display: flex;
-      gap: 16px;
-      align-items: center;
-    }
+    /* ── Profile ── */
+    .hero-side { display: grid; gap: 22px; }
+    .profile-card { padding: 26px; display: grid; gap: 16px; }
+    .profile-top { display: flex; gap: 16px; align-items: center; }
 
     .avatar {
       width: 74px;
       height: 74px;
       border-radius: 18px;
-      background:
-        linear-gradient(135deg, rgba(139, 92, 246, 0.95), rgba(6, 182, 212, 0.88));
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.95), rgba(6, 182, 212, 0.88));
       display: grid;
       place-items: center;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       font-weight: 800;
       box-shadow: 0 18px 30px rgba(6, 182, 212, 0.15);
       flex: none;
     }
 
-    .profile-meta h2 {
-      margin: 0;
-      font-size: 1.25rem;
-    }
+    .profile-meta h2 { margin: 0; font-size: 1.18rem; }
+    .profile-meta p { margin: 6px 0 0; color: var(--muted); line-height: 1.5; font-size: 0.92rem; }
 
-    .profile-meta p {
-      margin: 6px 0 0;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    .mini-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-    }
+    .mini-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 
     .mini {
       background: rgba(255,255,255,0.03);
@@ -281,36 +246,12 @@
       padding: 14px;
     }
 
-    .mini .value {
-      font-size: 1.35rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-    }
+    .mini .value { font-size: 1.28rem; font-weight: 800; letter-spacing: -0.03em; }
+    .mini .label { margin-top: 6px; color: var(--muted); font-size: 0.85rem; }
 
-    .mini .label {
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .stack-strip {
-      padding: 20px 22px;
-      display: grid;
-      gap: 10px;
-    }
-
-    .stack-strip .title {
-      font-size: 0.92rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-    }
-
-    .ticker {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+    .stack-strip { padding: 20px 22px; display: grid; gap: 10px; }
+    .stack-strip .title { font-size: 0.84rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--muted); }
+    .ticker { display: flex; gap: 10px; flex-wrap: wrap; }
 
     .chip {
       padding: 9px 12px;
@@ -318,52 +259,18 @@
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.03);
       color: #dce3ee;
-      font-size: 0.92rem;
+      font-size: 0.86rem;
     }
 
-    section {
-      padding: 22px 0;
-    }
+    /* ── Sections ── */
+    section { padding: 22px 0; }
 
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 18px;
-      margin-bottom: 18px;
-      flex-wrap: wrap;
-    }
+    .section-head { margin-bottom: 18px; }
+    .section-head h2 { margin: 0; font-size: clamp(1.4rem, 3vw, 2rem); letter-spacing: -0.04em; }
+    .section-head p { margin: 6px 0 0; color: var(--muted); max-width: 60ch; line-height: 1.6; font-size: 0.95rem; }
 
-    .section-head h2 {
-      margin: 0;
-      font-size: clamp(1.4rem, 3vw, 2.1rem);
-      letter-spacing: -0.04em;
-    }
-
-    .section-head p {
-      margin: 0;
-      color: var(--muted);
-      max-width: 60ch;
-      line-height: 1.6;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-    }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 
     .card {
       background: var(--card);
@@ -373,33 +280,35 @@
       overflow: hidden;
     }
 
-    .card-inner {
-      padding: 22px;
-    }
+    .card-inner { padding: 22px; }
 
-    .tag-row {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 14px;
-    }
+    .tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
 
     .tag {
-      padding: 7px 10px;
+      padding: 7px 11px;
       border-radius: 999px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.03);
       color: #d9e1ed;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
     }
 
+    /* ── Experience ── */
+    .exp-card { padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+    .exp-header { display: flex; flex-direction: column; gap: 4px; }
+    .exp-role { font-size: 1.05rem; font-weight: 700; margin: 0; }
+    .exp-meta { color: var(--muted); font-size: 0.9rem; }
+    .exp-desc { color: #cfd6e2; line-height: 1.7; margin: 0; font-size: 0.94rem; }
+
+    /* ── Projects ── */
     .project-card {
       position: relative;
-      min-height: 250px;
+      min-height: 260px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       overflow: hidden;
+      padding: 22px;
     }
 
     .project-card::before {
@@ -407,205 +316,199 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at top right, rgba(6, 182, 212, 0.18), transparent 30%),
-        radial-gradient(circle at bottom left, rgba(139, 92, 246, 0.18), transparent 35%);
+        radial-gradient(circle at top right, rgba(6, 182, 212, 0.14), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(139, 92, 246, 0.14), transparent 35%);
       pointer-events: none;
     }
 
-    .project-card > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    .project-header {
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      align-items: start;
-    }
-
-    .project-title {
-      margin: 0;
-      font-size: 1.18rem;
-    }
-
-    .project-desc {
-      margin: 12px 0 0;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    .project-links {
-      display: flex;
-      gap: 10px;
-      margin-top: 18px;
-      flex-wrap: wrap;
-    }
+    .project-card > * { position: relative; z-index: 1; }
+    .project-header { display: flex; justify-content: space-between; gap: 12px; align-items: start; }
+    .project-title-group { display: flex; flex-direction: column; gap: 3px; }
+    .project-title { margin: 0; font-size: 1.1rem; font-weight: 700; }
+    .project-subtitle { color: var(--muted); font-size: 0.86rem; }
+    .project-desc { margin: 12px 0 0; color: #bfc8d8; line-height: 1.68; font-size: 0.92rem; }
+    .project-links { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
 
     .link-pill {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
       padding: 9px 12px;
       border: 1px solid var(--line);
       border-radius: 999px;
       background: rgba(255,255,255,0.03);
       color: var(--text);
-      font-size: 0.92rem;
+      font-size: 0.86rem;
       transition: 180ms ease;
     }
 
-    .link-pill:hover {
-      background: rgba(255,255,255,0.06);
-      transform: translateY(-1px);
-    }
+    .link-pill:hover { background: rgba(255,255,255,0.06); transform: translateY(-1px); }
 
-    .timeline {
-      position: relative;
-      padding-left: 22px;
-    }
-
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 8px;
-      top: 6px;
-      bottom: 6px;
-      width: 2px;
-      background: linear-gradient(180deg, rgba(139, 92, 246, 0.8), rgba(6, 182, 212, 0.6));
-    }
-
-    .timeline-item {
-      position: relative;
-      padding: 0 0 18px 18px;
-    }
-
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: -1px;
-      top: 8px;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 0 0 5px rgba(139, 92, 246, 0.12);
-    }
-
-    .timeline-item:last-child {
-      padding-bottom: 0;
-    }
-
-    .timeline-item h3 {
-      margin: 0;
-      font-size: 1.05rem;
-    }
-
-    .timeline-meta {
-      color: var(--muted);
-      font-size: 0.94rem;
-      margin-top: 4px;
-    }
-
-    .timeline-item p {
-      color: #cfd6e2;
-      line-height: 1.65;
-      margin: 10px 0 0;
-    }
-
-    .skill-list {
-      display: grid;
-      gap: 14px;
-    }
-
-    .skill-row {
-      display: grid;
-      gap: 8px;
-    }
-
-    .skill-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      color: #d9e1ed;
-      font-size: 0.95rem;
-    }
-
-    .bar {
-      width: 100%;
-      height: 10px;
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 11px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.77rem;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
-    .bar > span {
-      display: block;
-      height: 100%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      width: var(--value, 0%);
+    .status-live {
+      background: rgba(34, 197, 94, 0.12);
+      color: #86efac;
+      border: 1px solid rgba(34, 197, 94, 0.22);
     }
 
-    .article-list,
-    .community-list,
-    .university-list {
+    .status-progress {
+      background: rgba(251, 191, 36, 0.1);
+      color: #fcd34d;
+      border: 1px solid rgba(251, 191, 36, 0.2);
+    }
+
+    /* ── Skills ── */
+    .skill-group { margin-bottom: 22px; }
+    .skill-group:last-child { margin-bottom: 0; }
+
+    .skill-group-label {
+      font-size: 0.77rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .skill-group .tag-row { margin-top: 0; }
+
+    /* ── Certifications ── */
+    .cert-card {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: 200ms ease;
+    }
+
+    .cert-card:hover { transform: translateY(-2px); border-color: rgba(139, 92, 246, 0.22); }
+
+    .cert-top { display: flex; justify-content: space-between; align-items: start; gap: 12px; }
+
+    .cert-issuer {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-2);
+      font-weight: 600;
+    }
+
+    .cert-title { margin: 0; font-size: 0.98rem; font-weight: 700; line-height: 1.35; }
+    .cert-meta { color: var(--muted); font-size: 0.84rem; }
+
+    .cert-featured {
+      border-color: rgba(251, 146, 60, 0.28);
+      background:
+        linear-gradient(135deg, rgba(251, 146, 60, 0.08), rgba(139, 92, 246, 0.04)),
+        var(--card);
+    }
+
+    .cert-badge {
+      display: inline-flex;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(251, 146, 60, 0.12);
+      color: #fdba74;
+      border: 1px solid rgba(251, 146, 60, 0.22);
+      font-size: 0.71rem;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ── Community ── */
+    .community-card { padding: 22px; display: flex; gap: 16px; align-items: flex-start; }
+
+    .community-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
       display: grid;
-      gap: 14px;
+      place-items: center;
+      font-size: 1.2rem;
+      background: rgba(139, 92, 246, 0.1);
+      border: 1px solid rgba(139, 92, 246, 0.18);
+      flex-shrink: 0;
     }
 
-    .item {
-      padding: 18px 20px;
+    .community-body h3 { margin: 0; font-size: 1rem; font-weight: 700; line-height: 1.35; }
+    .community-body .meta { color: var(--muted); font-size: 0.86rem; margin-top: 4px; }
+    .community-body p { margin: 10px 0 0; color: #cfd6e2; line-height: 1.65; font-size: 0.92rem; }
+
+    /* ── University ── */
+    .course-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+
+    .course-item {
+      padding: 14px 16px;
       background: rgba(255,255,255,0.03);
       border: 1px solid var(--line);
-      border-radius: 18px;
-    }
-
-    .item h3 {
-      margin: 0;
-      font-size: 1.03rem;
-    }
-
-    .item .meta {
-      color: var(--muted);
-      margin-top: 5px;
-      font-size: 0.94rem;
-    }
-
-    .item p {
-      margin: 10px 0 0;
-      color: #d2dae6;
-      line-height: 1.6;
-    }
-
-    .cta {
-      padding: 28px;
-      display: grid;
-      gap: 16px;
+      border-radius: 14px;
+      display: flex;
       align-items: center;
-      background:
-        linear-gradient(135deg, rgba(139, 92, 246, 0.14), rgba(6, 182, 212, 0.1)),
-        rgba(255,255,255,0.03);
+      gap: 10px;
+      font-size: 0.91rem;
+      color: #d9e1ed;
+      transition: 180ms ease;
     }
 
-    .cta h2 {
-      margin: 0;
-      font-size: clamp(1.5rem, 4vw, 2.3rem);
-      letter-spacing: -0.04em;
+    .course-item:hover {
+      background: rgba(139, 92, 246, 0.07);
+      border-color: rgba(139, 92, 246, 0.2);
     }
 
-    .cta p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.65;
+    .campus-item {
+      padding: 18px 20px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      margin-bottom: 12px;
     }
 
-    footer {
-      padding: 28px 0 42px;
-      color: var(--muted);
-      font-size: 0.94rem;
+    .campus-item:last-child { margin-bottom: 0; }
+    .campus-item h4 { margin: 0; font-size: 0.97rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+    .campus-item p { margin: 8px 0 0; color: var(--muted); line-height: 1.6; font-size: 0.9rem; }
+
+    /* ── Articles ── */
+    .article-item {
+      padding: 22px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
     }
+
+    .article-soon-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: rgba(139, 92, 246, 0.1);
+      color: #c7b7ff;
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      font-size: 0.77rem;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .article-body h3 { margin: 0; font-size: 0.97rem; color: var(--muted); font-weight: 500; }
+    .article-body p { margin: 8px 0 0; color: #8a94a5; line-height: 1.65; font-size: 0.9rem; }
+
+    /* ── Footer ── */
+    footer { padding: 28px 0 42px; color: var(--muted); font-size: 0.92rem; }
 
     .footer-row {
       display: flex;
@@ -616,56 +519,27 @@
       padding-top: 18px;
     }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: 650ms ease;
-    }
+    /* ── Reveal ── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: 650ms ease; }
+    .reveal.show { opacity: 1; transform: translateY(0); }
 
-    .reveal.show {
-      opacity: 1;
-      transform: translateY(0);
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
     }
 
     @media (max-width: 980px) {
-      .hero-grid,
-      .grid-2,
-      .grid-3,
-      .grid-4 {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding-top: 40px;
-      }
+      .hero-grid, .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .hero { padding-top: 40px; }
     }
 
     @media (max-width: 680px) {
-      .topbar-inner {
-        align-items: start;
-        flex-direction: column;
-        padding: 12px 0;
-      }
-
-      .nav {
-        justify-content: flex-start;
-      }
-
-      .hero-main,
-      .card-inner,
-      .cta,
-      .profile-card,
-      .stack-strip {
-        padding: 18px;
-      }
-
-      .hero h1 {
-        max-width: 100%;
-      }
-
-      .mini-grid {
-        grid-template-columns: 1fr;
-      }
+      .topbar-inner { align-items: start; flex-direction: column; padding: 12px 0; }
+      .nav { justify-content: flex-start; }
+      .hero-main, .card-inner, .profile-card, .stack-strip, .exp-card, .project-card, .community-card, .cert-card { padding: 18px; }
+      .hero h1 { max-width: 100%; }
+      .mini-grid { grid-template-columns: 1fr; }
+      .course-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -674,67 +548,62 @@
 
   <header class="topbar">
     <div class="container topbar-inner">
-      <a class="brand" href="#home" aria-label="Go to top of page">
+      <a class="brand" href="#home" aria-label="Go to top">
         <span class="brand-mark">K</span>
-        <span>Your Name</span>
+        <span>Krishna Karthik Kotamraju</span>
       </a>
       <nav class="nav" aria-label="Primary">
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
+        <a href="#certifications">Certifications</a>
         <a href="#community">Community</a>
-        <a href="#articles">Articles</a>
         <a href="#university">University</a>
+        <a href="#articles">Writing</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <main id="home" class="container">
+
+    <!-- ══ HERO ══ -->
     <section class="hero reveal">
       <div class="hero-grid">
         <article class="panel hero-main">
-          <div class="eyebrow">Technical portfolio with a personal edge</div>
-          <h1><span>Building useful things</span> with code, curiosity, and consistency.</h1>
+          <div class="eyebrow">M.S. Computer Science @ USC &nbsp;·&nbsp; GPA 3.7 &nbsp;·&nbsp; AWS Certified</div>
+          <h1><span><span style="font-size:0.7em; line-height:0; vertical-align:middle;">↱</span> concept → design </span></h1>
+          <h1><span>ship ← build ↵ </span></h1>
+
           <p>
-            Hi, I am <strong>Your Name</strong> — a student / developer / builder who likes shipping clean products,
-            learning in public, and staying close to the work. This portfolio is designed to showcase work experience,
-            projects, skills, community activity, writing, and university life in one sharp, simple place.
+            I'm a CS grad student at USC. I build AI systems and Full stack projects, that actually hold up under real load, real users, and real deadlines.
           </p>
+          <h4>My work lives at the intersection of:</h4>
+          <ul class="hero-interests">
+            <li><span><strong>Agentic AI</strong> — multi-agent pipelines, RAG, MCP, LLM orchestration</span></li>
+            <li><span><strong>Full Stack Engineering</strong> — React, Node.js, TypeScript, REST, GraphQL</span></li>
+            <li><span><strong>Cloud and Infrastructure</strong> — AWS, Docker, CI/CD</span></li>
+          </ul>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects">See featured work</a>
+            <a class="btn btn-primary" href="#projects">See my work</a>
             <a class="btn" href="#contact">Get in touch</a>
-            <a class="btn" href="#articles">Read my writing</a>
           </div>
         </article>
 
         <aside class="hero-side">
           <div class="panel profile-card">
             <div class="profile-top">
-              <div class="avatar">YN</div>
+              <div class="avatar">KK</div>
               <div class="profile-meta">
-                <h2>Your Name</h2>
-                <p>Computer Science / Software / Product-minded builder</p>
+                <h2>Krishna Karthik Kotamraju</h2>
+                <p>SDE turned grad student. Builder of AI systems and Full stack projects.</p>
               </div>
             </div>
-
             <div class="mini-grid">
-              <div class="mini">
-                <div class="value">3+</div>
-                <div class="label">Years building</div>
-              </div>
-              <div class="mini">
-                <div class="value">12</div>
-                <div class="label">Projects shipped</div>
-              </div>
-              <div class="mini">
-                <div class="value">5</div>
-                <div class="label">Tech stacks</div>
-              </div>
-              <div class="mini">
-                <div class="value">∞</div>
-                <div class="label">Curiosity level</div>
-              </div>
+              <div class="mini"><div class="value">2.5+</div><div class="label">Years in industry</div></div>
+              <div class="mini"><div class="value">4</div><div class="label">Projects shipped</div></div>
+              <div class="mini"><div class="value">3.7</div><div class="label">GPA at USC</div></div>
+              <div class="mini"><div class="value">AWS</div><div class="label">Solutions Architect</div></div>
             </div>
           </div>
 
@@ -746,309 +615,375 @@
       </div>
     </section>
 
+    <!-- ══ EXPERIENCE ══ -->
     <section id="experience" class="reveal">
       <div class="section-head">
-        <div>
-          <h2>Work Experience</h2>
-          <p>Show impact, scope, and the kind of problems you were trusted to solve.</p>
-        </div>
+        <h2>Work Experience</h2>
+        <p>2.5 years shipping production software before coming to USC for the M.S.</p>
       </div>
       <div class="grid-2" id="experienceGrid"></div>
     </section>
 
+    <!-- ══ PROJECTS ══ -->
     <section id="projects" class="reveal">
       <div class="section-head">
-        <div>
-          <h2>Featured Projects</h2>
-          <p>Keep this section focused on your strongest builds: tools, apps, research, dashboards, or systems.</p>
-        </div>
+        <h2>Featured Projects</h2>
+        <p>AI systems, real-time infrastructure, and one VR experience for Meta Quest 3.</p>
       </div>
-      <div class="grid-3" id="projectsGrid"></div>
+      <div class="grid-2" id="projectsGrid"></div>
     </section>
 
+    <!-- ══ SKILLS ══ -->
     <section id="skills" class="reveal">
       <div class="section-head">
-        <div>
-          <h2>Skills</h2>
-          <p>Mix technical depth with a light touch of collaboration and communication.</p>
-        </div>
+        <h2>Skills</h2>
+        <p>Languages, frameworks, AI tooling, databases, and cloud infrastructure.</p>
       </div>
-      <div class="grid-2">
-        <div class="card card-inner">
-          <h3 style="margin-top:0">Technical stack</h3>
-          <div class="skill-list" id="skillBars"></div>
-        </div>
-        <div class="card card-inner">
-          <h3 style="margin-top:0">Tools and strengths</h3>
-          <div class="tag-row" id="skillTags"></div>
-        </div>
+      <div class="card card-inner">
+        <div id="skillsContainer"></div>
       </div>
     </section>
 
+    <!-- ══ CERTIFICATIONS ══ -->
+    <section id="certifications" class="reveal">
+      <div class="section-head">
+        <h2>Certifications</h2>
+        <p>Cloud architecture, data science, project management, and the fundamentals.</p>
+      </div>
+      <div class="grid-3" id="certsGrid"></div>
+    </section>
+
+    <!-- ══ COMMUNITY ══ -->
     <section id="community" class="reveal">
       <div class="section-head">
-        <div>
-          <h2>Community Activities</h2>
-          <p>Mentorship, volunteering, clubs, hackathons, open-source, and anything that shows you contribute beyond yourself.</p>
-        </div>
+        <h2>Community</h2>
+        <p>Hackathons, mentorship, and the work I do outside of coursework.</p>
       </div>
-      <div class="community-list" id="communityList"></div>
+      <div class="grid-2" id="communityGrid"></div>
     </section>
 
-    <section id="articles" class="reveal">
-      <div class="section-head">
-        <div>
-          <h2>Articles & Writing</h2>
-          <p>Use this space for blog posts, LinkedIn articles, Medium posts, newsletters, or essays.</p>
-        </div>
-      </div>
-      <div class="article-list" id="articlesList"></div>
-    </section>
-
+    <!-- ══ UNIVERSITY ══ -->
     <section id="university" class="reveal">
       <div class="section-head">
-        <div>
-          <h2>University Life</h2>
-          <p>Show the side that is not just GPA: clubs, labs, competitions, leadership, events, and campus moments.</p>
-        </div>
+        <h2>University Life</h2>
+        <p>What I'm studying at USC, and where I actually spend my time on campus.</p>
       </div>
       <div class="grid-2">
         <div class="card card-inner">
-          <h3 style="margin-top:0">Highlights</h3>
-          <div class="university-list" id="universityList"></div>
-        </div>
-        <div class="card card-inner">
-          <h3 style="margin-top:0">My current focus</h3>
-          <p style="color:var(--muted); line-height:1.7; margin-top:0;">
-            I am currently focused on improving my systems thinking, product sense, and execution speed.
-            I care about writing better code, learning from real users, and building things that feel polished.
+          <h3 style="margin:0 0 6px; font-size:1.02rem;">Coursework</h3>
+          <p style="color:var(--muted); margin:0 0 16px; font-size:0.91rem; line-height:1.6;">
+            Graduate courses spanning algorithms, systems, retrieval, and applied machine learning.
           </p>
-          <div class="tag-row" id="focusTags"></div>
+          <div class="course-grid" id="courseGrid"></div>
+        </div>
+
+        <div class="card card-inner">
+          <h3 style="margin:0 0 6px; font-size:1.02rem;">Around Campus</h3>
+          <p style="color:var(--muted); margin:0 0 16px; font-size:0.91rem; line-height:1.6;">
+            Life at USC outside the classroom.
+          </p>
+          <div id="campusList"></div>
         </div>
       </div>
     </section>
 
-    <section class="reveal">
-      <div class="card cta">
-        <h2>Simple on the surface. Sharp underneath.</h2>
-        <p>
-          This portfolio layout is built to be updated often. Swap the data arrays in the JavaScript, change the text,
-          and add new projects or posts as you grow. Push it to GitHub Pages, Netlify, or Vercel for automatic updates.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#contact">Let us connect</a>
-          <a class="btn" href="#home">Back to top</a>
-        </div>
+    <!-- ══ ARTICLES ══ -->
+    <section id="articles" class="reveal">
+      <div class="section-head">
+        <h2>Articles &amp; Writing</h2>
+        <p>Technical writing on AI systems, distributed architecture, and software engineering.</p>
       </div>
+      <div id="articlesList" style="display:grid; gap:14px;"></div>
     </section>
 
+    <!-- ══ CONTACT ══ -->
     <section id="contact" class="reveal">
       <div class="section-head">
-        <div>
-          <h2>Contact</h2>
-          <p>Make it easy for recruiters, collaborators, and friends to reach you.</p>
-        </div>
+        <h2>Contact</h2>
+        <p>Open to internship opportunities, collaborations, and interesting conversations.</p>
       </div>
       <div class="grid-3">
         <div class="card card-inner">
-          <h3 style="margin-top:0">Email</h3>
-          <p style="color:var(--muted); margin-bottom:0">your.email@example.com</p>
+          <h3 style="margin-top:0; font-size:0.97rem;">Email</h3>
+          <p style="color:var(--muted); margin:6px 0 0; font-size:0.92rem;">kotamraju.krishnakarthik@gmail.com</p>
         </div>
         <div class="card card-inner">
-          <h3 style="margin-top:0">GitHub</h3>
-          <p style="color:var(--muted); margin-bottom:0">github.com/yourusername</p>
+          <h3 style="margin-top:0; font-size:0.97rem;">GitHub</h3>
+          <p style="color:var(--muted); margin:6px 0 0; font-size:0.92rem;">github.com/karthik05k9</p>
         </div>
         <div class="card card-inner">
-          <h3 style="margin-top:0">LinkedIn</h3>
-          <p style="color:var(--muted); margin-bottom:0">linkedin.com/in/yourusername</p>
+          <h3 style="margin-top:0; font-size:0.97rem;">LinkedIn</h3>
+          <p style="color:var(--muted); margin:6px 0 0; font-size:0.92rem;">linkedin.com/in/kkrishnakarthik</p>
         </div>
       </div>
     </section>
 
     <footer>
       <div class="footer-row">
-        <div>© <span id="year"></span> Your Name. Built with HTML, CSS, and JavaScript.</div>
-        <div>Designed for GitHub Pages updates.</div>
+        <div>© <span id="year"></span> Krishna Karthik Kotamraju. Built with HTML, CSS, and JavaScript.</div>
+        <div>Actively seeking Summer 2027 internships.</div>
       </div>
     </footer>
   </main>
 
   <script>
     const data = {
-      stacks: ["JavaScript", "TypeScript", "React", "Node.js", "Python", "SQL"],
+      stacks: ["TypeScript", "Python", "React", "LangGraph", "Node.js", "AWS"],
+
       experience: [
         {
-          role: "Software Engineer Intern",
-          company: "Company Name",
-          period: "May 2025 - Aug 2025",
-          summary: "Built internal tools and improved workflows by automating repetitive tasks, reducing manual effort, and collaborating with cross-functional teams.",
-          tags: ["Automation", "APIs", "Teamwork"]
+          role: "Teaching Assistant & Grader",
+          subtitle: "CSCI 585 — Database Systems",
+          company: "University of Southern California",
+          period: "May 2026 – Present",
+          desc: "Support 100+ graduate students in a Database Systems course, clarifying SQL, relational design, and database architecture concepts while grading assignments and exams with detailed feedback.",
+          tags: ["SQL", "Relational Design", "Database Architecture", "Graduate Teaching"]
         },
         {
-          role: "Student Developer / TA / Research Assistant",
-          company: "University Name",
-          period: "2024 - Present",
-          summary: "Supported labs, demos, or research experiments while sharpening debugging, communication, and technical documentation skills.",
-          tags: ["Teaching", "Research", "Documentation"]
+          role: "Software Development Engineer I",
+          subtitle: "Full-time engineering role",
+          company: "Brane Enterprises",
+          period: "Jan 2023 – Aug 2025",
+          desc: "Reduced internal status meetings by ~50% by shipping an enterprise AI agent (LangGraph, FastAPI, FAISS). Improved multimodal LLM inference by 15% on constrained GPUs using PyTorch and Hugging Face. Delivered a $250K fintech microservice by leading an 8-member team on AWS EKS. Built a Python and JavaScript COBOL-to-Java parser supporting a company-wide legacy modernization initiative.",
+          tags: ["LangGraph", "FastAPI", "PyTorch", "AWS EKS", "Node.js", "MongoDB", "CI/CD"]
         }
       ],
+
       projects: [
         {
-          title: "Project One — Smart Productivity App",
-          desc: "A clean app that helps users organize tasks, track habits, or manage projects with a focus on speed and clarity.",
-          stack: ["React", "Firebase", "Tailwind"],
-          links: ["Live Demo", "GitHub"]
+          title: "MARA",
+          subtitle: "Multi-Agent Research Intelligence Platform",
+          desc: "A full-stack AI research platform performing real-time retrieval from 5+ sources (arXiv, IEEE Xplore, GitHub, Hugging Face) using a RAG pipeline with 6 specialized reasoning agents — retrieval, summarization, hypothesis generation, critic evaluation, synthesis, and Knowledge Graph construction.",
+          stack: ["React", "TypeScript", "Node.js", "LangGraph", "RAG", "MCP"],
+          status: "progress",
+          statusLabel: "In Progress",
+          links: [{ label: "GitHub ↗", href: "#" }]
         },
         {
-          title: "Project Two — Analytics Dashboard",
-          desc: "A data-driven dashboard that visualizes key metrics and turns raw data into decisions.",
-          stack: ["Python", "SQL", "Charting"],
-          links: ["Case Study", "GitHub"]
+          title: "MockPad",
+          subtitle: "Collaborative Interview Platform",
+          desc: "Real-time collaborative coding for 50+ concurrent users at sub-100 ms sync latency using Yjs CRDTs and WebSockets. Deterministic interview replay via an event-sourced pipeline that synchronizes code, execution events, audio, and Whisper transcripts.",
+          stack: ["React", "Node.js", "WebSockets", "Yjs", "MongoDB", "Whisper"],
+          status: "live",
+          statusLabel: "Live",
+          links: [{ label: "Live ↗", href: "#" }, { label: "GitHub ↗", href: "#" }]
         },
         {
-          title: "Project Three — Campus Tool",
-          desc: "A student-focused tool built to solve a real campus problem such as events, navigation, or resource discovery.",
-          stack: ["Node.js", "Express", "PostgreSQL"],
-          links: ["Read More", "GitHub"]
+          title: "Containerized Microservices Platform",
+          subtitle: "Infrastructure and Observability",
+          desc: "A self-hostable microservices platform built for fault-tolerant workflow execution, secure service communication, and real-time application observability.",
+          stack: ["Docker", "PostgreSQL", "Redis", "TimescaleDB", "Node.js", "RS256 JWT"],
+          status: "progress",
+          statusLabel: "In Progress",
+          links: [{ label: "GitHub ↗", href: "#" }]
+        },
+        {
+          title: "CelestiaVR",
+          subtitle: "XR Stargazing — RealityShift Hackathon",
+          desc: "Immersive VR stargazing experience for Meta Quest 3, powered by real NASA/JPL planetary and star catalog data. Built and submitted to RealityShift, USC's XR Hackathon for Social Good.",
+          stack: ["Unity", "C#", "Meta Quest 3", "NASA/JPL Data", "XR"],
+          status: "live",
+          statusLabel: "Live",
+          links: [{ label: "Devpost ↗", href: "#" }, { label: "GitHub ↗", href: "#" }]
         }
       ],
-      skills: [
-        { name: "Frontend", value: 88 },
-        { name: "Backend", value: 82 },
-        { name: "Data / SQL", value: 76 },
-        { name: "System Design", value: 68 },
-        { name: "Communication", value: 90 }
+
+      skillGroups: [
+        { label: "Languages", items: ["Python", "TypeScript", "JavaScript", "Java", "C++", "C#", "SQL", "HTML/CSS"] },
+        { label: "AI / ML", items: ["LangGraph", "RAG Pipelines", "PyTorch", "Hugging Face", "FAISS", "MCP", "Agentic AI"] },
+        { label: "Frontend & Backend", items: ["React", "Next.js", "Node.js", "Express", "FastAPI", "GraphQL", "REST APIs", "WebSockets"] },
+        { label: "Databases", items: ["PostgreSQL", "MongoDB", "Redis", "TimescaleDB", "MySQL", "AWS DynamoDB", "MSSQL"] },
+        { label: "Cloud & Infrastructure", items: ["AWS Lambda", "AWS EKS", "S3", "API Gateway", "Docker", "GitHub Actions", "Linux", "CI/CD"] }
       ],
-      skillTags: [
-        "Git & GitHub", "REST APIs", "Responsive UI", "Debugging", "Testing", "Agile", "Figma", "Deployment"
+
+      certifications: [
+        {
+          title: "AWS Certified Solutions Architect – Associate",
+          issuer: "Amazon Web Services",
+          meta: "Cloud architecture and system design",
+          featured: true
+        },
+        {
+          title: "Data Science Foundations",
+          issuer: "Univ. of London & IBM",
+          meta: "8-course specialization · Oct 2024"
+        },
+        {
+          title: "Google Project Management",
+          issuer: "Google",
+          meta: "6-course professional certificate · Oct 2024"
+        },
+        {
+          title: "Database Programming with SQL",
+          issuer: "Oracle Academy",
+          meta: "Award of course completion · Apr 2022"
+        },
+        {
+          title: "Python Data Structures",
+          issuer: "University of Michigan",
+          meta: "Coursera · Jul 2020"
+        },
+        {
+          title: "Grade 4 — Electronic Keyboards",
+          issuer: "Trinity College London",
+          meta: "Graded music performance exam · 2019"
+        }
       ],
+
       community: [
         {
-          title: "Hackathon Participation",
-          meta: "Built under pressure with a team",
-          desc: "Mention awards, finalist placements, or the value of the solution you built in a short time window."
+          icon: "🥽",
+          title: "RealityShift — USC XR Hackathon for Social Good",
+          meta: "Participant · April 2026",
+          desc: "Built CelestiaVR, an immersive VR stargazing experience for Meta Quest 3 using real NASA/JPL astronomical data, submitted to USC's XR hackathon focused on social impact."
         },
         {
-          title: "Volunteering / Mentorship",
-          meta: "Giving back through time and skills",
-          desc: "Highlight tutoring, mentorship, outreach, workshops, or any work that helped other people grow."
+          icon: "📚",
+          title: "K-12 STEM Mentor",
+          meta: "Volunteer mentor",
+          desc: "Mentor school-age students in programming and STEM fundamentals, helping them build confidence with code and problem solving early on."
         },
         {
-          title: "Open Source / Clubs",
-          meta: "Contributing to communities around code",
-          desc: "Add club leadership, event organizing, pull requests, or a project that helped a wider group."
+          icon: "🚐",
+          title: "USC Transportation — Student Driver",
+          meta: "Student Worker · USC",
+          desc: "Work as a student driver with USC Transportation, supporting safe campus transit for students and staff while balancing a full graduate course load."
+        },
+        {
+          icon: "💻",
+          title: "Hack IT'22 — National Level Hackathon",
+          meta: "Participant · CBIT Hyderabad, Dec 2022",
+          desc: "Competed in a 24-hour national level hackathon organized by the Departments of IT and CSE at Chaitanya Bharathi Institute of Technology."
         }
       ],
+
+      courses: [
+        { icon: "🧮", name: "Analysis of Algorithms" },
+        { icon: "🌐", name: "Web Technologies" },
+        { icon: "🔍", name: "Information Retrieval" },
+        { icon: "📊", name: "Data Science Using ML" },
+        { icon: "🎮", name: "Building Game Consoles" },
+        { icon: "🗄️", name: "Database Systems (TA)" }
+      ],
+
+      campus: [
+        {
+          icon: "📖",
+          title: "Leavey Library",
+          desc: "My go-to spot for undistracted deep work. If I'm not in class, there's a good chance I'm here."
+        },
+        {
+          icon: "🏋️",
+          title: "Lyon Center",
+          desc: "Regular at the gym and the tennis courts. Best way I've found to reset between builds and deadlines."
+        },
+        {
+          icon: "🥽",
+          title: "XR & Hackathon Community",
+          desc: "Active in USC's XR and hackathon scene, most recently through RealityShift, USC's XR hackathon for social good."
+        }
+      ],
+
       articles: [
-        {
-          title: "How I approached building faster without losing quality",
-          meta: "Blog post • 2026",
-          desc: "Write about your process, lessons learned, and the habits that improved your output."
-        },
-        {
-          title: "What I learned from shipping a project end-to-end",
-          meta: "LinkedIn / Medium • 2026",
-          desc: "Share technical takeaways, design decisions, and what you would do differently next time."
-        }
-      ],
-      university: [
-        {
-          title: "Relevant coursework",
-          meta: "Classes that support your direction",
-          desc: "Algorithms, databases, software engineering, AI, systems, product design, or anything that matters to your path."
-        },
-        {
-          title: "Campus involvement",
-          meta: "Leadership and student life",
-          desc: "Clubs, competitions, panels, events, student orgs, and the energy you bring to campus."
-        }
-      ],
-      focusTags: ["Shipping", "Learning", "Building", "Storytelling", "Design thinking"]
+        { topic: "On building agentic AI systems and the gap between demos and production software." },
+        { topic: "On quantitative trading systems, market microstructure, and where high-performance engineering meets financial markets." }
+      ]
     };
 
-    const experienceGrid = document.getElementById("experienceGrid");
-    const projectsGrid = document.getElementById("projectsGrid");
-    const skillBars = document.getElementById("skillBars");
-    const skillTags = document.getElementById("skillTags");
-    const communityList = document.getElementById("communityList");
-    const articlesList = document.getElementById("articlesList");
-    const universityList = document.getElementById("universityList");
-    const focusTags = document.getElementById("focusTags");
-    const stackTicker = document.getElementById("stackTicker");
-    const year = document.getElementById("year");
+    document.getElementById("stackTicker").innerHTML =
+      data.stacks.map(s => `<span class="chip">${s}</span>`).join("");
 
-    year.textContent = new Date().getFullYear();
-
-    stackTicker.innerHTML = data.stacks.map(item => `<span class="chip">${item}</span>`).join("");
-    skillTags.innerHTML = data.skillTags.map(item => `<span class="tag">${item}</span>`).join("");
-    focusTags.innerHTML = data.focusTags.map(item => `<span class="tag">${item}</span>`).join("");
-
-    experienceGrid.innerHTML = data.experience.map(item => `
-      <article class="card card-inner">
-        <h3 style="margin-top:0">${item.role}</h3>
-        <div class="meta" style="color:var(--muted); margin-top:6px;">${item.company} • ${item.period}</div>
-        <p style="color:#d2dae6; line-height:1.7;">${item.summary}</p>
-        <div class="tag-row">${item.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div>
+    document.getElementById("experienceGrid").innerHTML = data.experience.map(e => `
+      <article class="card exp-card">
+        <div class="exp-header">
+          <p class="exp-role">${e.role}</p>
+          <span class="exp-meta">${e.company} &nbsp;·&nbsp; ${e.period}</span>
+          <span class="exp-meta" style="color:#7882a0; font-size:0.85rem;">${e.subtitle}</span>
+        </div>
+        <p class="exp-desc">${e.desc}</p>
+        <div class="tag-row">${e.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div>
       </article>
     `).join("");
 
-    projectsGrid.innerHTML = data.projects.map(project => `
-      <article class="card project-card card-inner">
+    document.getElementById("projectsGrid").innerHTML = data.projects.map(p => `
+      <article class="card project-card">
         <div>
           <div class="project-header">
-            <h3 class="project-title">${project.title}</h3>
-            <span class="tag">Featured</span>
+            <div class="project-title-group">
+              <h3 class="project-title">${p.title}</h3>
+              <span class="project-subtitle">${p.subtitle}</span>
+            </div>
+            <span class="status-badge status-${p.status}">${p.status === "live" ? "🟢" : "🚧"} ${p.statusLabel}</span>
           </div>
-          <p class="project-desc">${project.desc}</p>
-          <div class="tag-row">${project.stack.map(s => `<span class="tag">${s}</span>`).join("")}</div>
+          <p class="project-desc">${p.desc}</p>
+          <div class="tag-row">${p.stack.map(s => `<span class="tag">${s}</span>`).join("")}</div>
         </div>
         <div class="project-links">
-          ${project.links.map(link => `<a href="#contact" class="link-pill">${link} <span aria-hidden="true">↗</span></a>`).join("")}
+          ${p.links.map(l => `<a href="${l.href}" class="link-pill">${l.label}</a>`).join("")}
         </div>
       </article>
     `).join("");
 
-    skillBars.innerHTML = data.skills.map(skill => `
-      <div class="skill-row">
-        <div class="skill-top">
-          <span>${skill.name}</span>
-          <span>${skill.value}%</span>
-        </div>
-        <div class="bar"><span style="--value:${skill.value}%"></span></div>
+    document.getElementById("skillsContainer").innerHTML = data.skillGroups.map(g => `
+      <div class="skill-group">
+        <div class="skill-group-label">${g.label}</div>
+        <div class="tag-row">${g.items.map(i => `<span class="tag">${i}</span>`).join("")}</div>
       </div>
     `).join("");
 
-    communityList.innerHTML = data.community.map(item => `
-      <article class="item">
-        <h3>${item.title}</h3>
-        <div class="meta">${item.meta}</div>
-        <p>${item.desc}</p>
+    document.getElementById("certsGrid").innerHTML = data.certifications.map(c => `
+      <article class="card cert-card${c.featured ? " cert-featured" : ""}">
+        <div class="cert-top">
+          <span class="cert-issuer">${c.issuer}</span>
+          ${c.featured ? `<span class="cert-badge">★ Featured</span>` : ""}
+        </div>
+        <h3 class="cert-title">${c.title}</h3>
+        <span class="cert-meta">${c.meta}</span>
       </article>
     `).join("");
 
-    articlesList.innerHTML = data.articles.map(item => `
-      <article class="item">
-        <h3>${item.title}</h3>
-        <div class="meta">${item.meta}</div>
-        <p>${item.desc}</p>
+    document.getElementById("communityGrid").innerHTML = data.community.map(c => `
+      <article class="card community-card">
+        <div class="community-icon">${c.icon}</div>
+        <div class="community-body">
+          <h3>${c.title}</h3>
+          <div class="meta">${c.meta}</div>
+          <p>${c.desc}</p>
+        </div>
       </article>
     `).join("");
 
-    universityList.innerHTML = data.university.map(item => `
-      <article class="item">
-        <h3>${item.title}</h3>
-        <div class="meta">${item.meta}</div>
-        <p>${item.desc}</p>
-      </article>
+    document.getElementById("courseGrid").innerHTML = data.courses.map(c => `
+      <div class="course-item">
+        <span>${c.icon}</span>
+        <span>${c.name}</span>
+      </div>
     `).join("");
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('show');
-      });
-    }, { threshold: 0.12 });
+    document.getElementById("campusList").innerHTML = data.campus.map(c => `
+      <div class="campus-item">
+        <h4><span>${c.icon}</span> ${c.title}</h4>
+        <p>${c.desc}</p>
+      </div>
+    `).join("");
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.getElementById("articlesList").innerHTML = data.articles.map(a => `
+      <div class="article-item">
+        <span class="article-soon-badge">✍️ Coming Soon</span>
+        <div class="article-body">
+          <h3>Technical writing in progress</h3>
+          <p>${a.topic}</p>
+        </div>
+      </div>
+    `).join("");
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("show"); }),
+      { threshold: 0.1 }
+    );
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
